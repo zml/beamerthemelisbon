@@ -1,0 +1,79 @@
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+\mode<presentation>
+
+
+\beamertemplatenavigationsymbolsempty
+
+
+\graphicspath{
+    {img/}
+}
+
+
+
+\setbeamerfont{block title}{size={}}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% OUTER THEME %%%%%%%%%
+\defbeamertemplate*{frametitle}{Lisbon theme}
+{%
+     \hspace*{-0.5cm}{\usebeamerfont{frametitle}\insertframetitle}\strut%
+    \vskip-0.5\baselineskip%
+    \noindent\hspace*{-0.5cm}\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
+   
+    %\rule
+    % width \paperwidth\vskip0.4pt\leaders%
+   % \vskip-0.5\baselineskip
+    %\nointerlineskip
+}
+\defbeamertemplate*{headline}{Lisbon theme}
+{%
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+  \end{beamercolorbox}%
+%  \ifbeamer@theme@subsection%
+%    \begin{beamercolorbox}[colsep=1.5pt]{middle separation line head}
+%    \end{beamercolorbox}
+%    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+%      leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+%      \usebeamerfont{subsection in head/foot}\insertsubsectionhead
+%    \end{beamercolorbox}%
+%  \fi%
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+  \end{beamercolorbox}
+}
+%\def\beamer@theme@footline@authorinstitutetitle{
+  \defbeamertemplate*{footline}{Lisbon theme}
+  {%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+    \end{beamercolorbox}
+    
+%    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+%      \leavevmode{\usebeamerfont{author in head/foot}\insertshortauthor}%
+%      \hfill%
+%      {\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
+%    \end{beamercolorbox}%
+    
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+       \raisebox{-0.4em}{ \includegraphics[trim=150px 150px 150px 150px,clip,height=1.2em]{logo_institute2}}
+%{\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
+      \hfill
+      {\usebeamerfont{title in head/foot}\insertshorttitle} 
+      \hfill 
+      {\insertframenumber\,/\,\inserttotalframenumber}%
+    \end{beamercolorbox}%
+    
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+    \end{beamercolorbox}
+  }
+%}I
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\usecolortheme{mint}
+\useinnertheme{rectangles}
+\mode
+<all>
+
+
