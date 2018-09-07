@@ -7,7 +7,7 @@ The Lisbon beamer theme is a simplistic theme for presentations.
 ## Installation
 
 1. Install LaTeX.
-2. Clone the git repository from github `git clone git@github.com:zml/beamerthemelisbon.git`.
+2. Clone the git repository from github `git clone https://github.com/zml/beamerthemelisbon.git`.
 3. run `make` to compile the file `example.tex`.
 4. If you like the theme, simply copy the files
 `colors.sty`,
