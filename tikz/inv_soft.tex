@@ -1,0 +1,17 @@
+
+\begin{tikzpicture}[
+every edge/.style = {draw=black,very thick},
+ vrtx/.style args = {#1/#2}{%
+      circle, draw, thick, fill=white,
+      minimum size=5mm, label=#1:#2},
+ factor/.style args = {#1/#2}{%
+      rectangle, draw, thick, fill=white,
+      minimum size=5mm, label=#1:#2}
+                    ]
+\node(x) [vrtx=/] at (0, 0) {$x$};
+\node(inv) [factor=/] at (2, 0) {\usebox{\softinv}};
+\node(y) [vrtx=/] at (4, 0) {$y$};
+%
+\path   (x)  edge (inv);
+\path   (inv)  edge (y);
+\end{tikzpicture}

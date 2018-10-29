@@ -1,0 +1,29 @@
+\newsavebox{\amplimiter}
+\savebox{\amplimiter}{%
+    \begin{tikzpicture}[font=\small,
+            >=stealth,
+        ]
+        \draw[->,black] (-0.6,0) -- (0.6,0);
+        \draw[->,black] (0,-0.6) -- (0,0.6);
+        \draw[thick,blue] (-0.6,-0.3) -- (-0.3,-0.3) -- (0.3,0.3) -- (0.6,0.3) ;
+       % \draw[thick, blue] (0,0) --(0.2,0) ..controls (0.5,1)..(1,1)..controls(1.2,1) and (1.8,0)..  
+       %     node[black,left]{$H(f)$} (2,0) -- (2.5,0);
+       % \draw (0,0) node[below]{$0$} (1,0) node[below]{$f$} (2,0) node[below]{$\rightarrow\infty$};
+    \end{tikzpicture}%
+}
+
+\newsavebox{\softinv}
+\savebox{\softinv}{%
+    \begin{tikzpicture}[font=\small,
+            >=stealth,
+        ]
+        %\draw[->,black] (-0.6,0) -- (0.6,0);
+        %\draw[->,black] (0,-0.6) -- (0,0.6);
+        \draw[thick,blue] (-0.6,-0.3) -- (-0.3,-0.3) -- (0.3,0.3) -- (0.6,0.3) ;
+        \draw[thick,blue] (-0.6,0.3) -- (-0.3,0.3) -- (0.3,-0.3) -- (0.6,-0.3) ;
+       % \draw[thick, blue] (0,0) --(0.2,0) ..controls (0.5,1)..(1,1)..controls(1.2,1) and (1.8,0)..  
+       %     node[black,left]{$H(f)$} (2,0) -- (2.5,0);
+       % \draw (0,0) node[below]{$0$} (1,0) node[below]{$f$} (2,0) node[below]{$\rightarrow\infty$};
+    \end{tikzpicture}%
+}
+

@@ -1,0 +1,26 @@
+{\bf Total Function}
+
+A function  $\phi$ is said to be a {\bf total computable function} if 
+
+\begin{align} 
+\phi \text{ is partial computable and } \text{Dom}(\phi) =  (\Sigma^\star)^n
+\end{align}
+
+{\bf Decidable Set}
+
+A  set $S$ is said to be decidable if there is a Turing Machine $M$ such that:
+
+\begin{align} 
+   \begin{cases}
+ s \in  S \implies M  \text{ accepts } \\    
+  s \notin  S  \implies M  \text{ rejects }   
+\end{cases}
+\end{align}
+{\bf Proposition:}    $S $ is decidable $\iff  X_S $ is totally computable 
+\begin{align} 
+   X_S(s) =  \begin{cases}
+1 \text{ if } s \in S \\
+0 \text{ otherwise} \\
+\end{cases}
+\end{align}
+ 

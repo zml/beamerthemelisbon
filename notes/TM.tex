@@ -1,0 +1,49 @@
+%\subsection{}
+%\subsection*{Turing Machine}
+A Turing Machine $M(Q,\Sigma,\Gamma,\delta,q_0,q_a,q_r,B)$ is a set where:
+\begin{itemize} 
+\item $Q$ is a finite set of states 
+\item $\Gamma$ is a finite set of symbols called the \textbf{tape alphabet }
+\item $ B \in \Gamma$  is the blank symbol
+\item $ \Sigma \subseteq \Gamma \setminus\{B\}$ is the \textbf{input alphabet}
+\item $ \delta : Q \setminus\{q_a,q_h\}\times \Gamma \rightarrow Q\times\Gamma\times \{L,R\}$ is the \textbf{transition function}
+\item $q_0 \in Q $ is the initial state
+\item $q_a \in Q $ is the accept state
+\item $q_r \in Q $ is the reject state
+\end{itemize}
+
+\begin{figure}
+
+\begin{tikzpicture}
+\tikzstyle{every path}=[very thick]
+
+\edef\sizetape{0.7cm}
+\tikzstyle{tmtape}=[draw,minimum size=\sizetape]
+\tikzstyle{tmhead}=[arrow box,draw,minimum size=.5cm,arrow box
+arrows={east:.25cm, west:0.25cm}]
+%% Draw TM tape
+\begin{scope}[start chain=1 going right,node distance=-0.15mm]
+    %\node [on chain=1,tmtape,draw=none] {$\ldots$};
+    \node [on chain=1,tmtape] (input) {$w_1$};
+    \node [on chain=1,tmtape] {B};
+    \node [on chain=1,tmtape] {$w_2$};
+    \node [on chain=1,tmtape] {B};
+    \node [on chain=1,tmtape] {$\ldots$};
+    \node [on chain=1,tmtape] {$w_n$};
+    \node [on chain=1,tmtape] {B};
+    \node [on chain=1,tmtape] {$\ldots$};
+     \node [on chain=1,tmtape] {B};
+    %\node [on chain=1,tmtape,draw=none] {$\ldots$};
+   % \node [on chain=1] {\textbf{Input/Output Tape}};
+\end{scope}
+%% Draw TM head below (input) tape cell
+\node [tmhead,yshift=-.3cm] at (input.south) (head) {$q_0$};
+\end{tikzpicture}
+\end{figure}
+%
+%A Turing Machine computes a (partial) function $f_M: (\Sigma^\star)^n \rightarrow \Sigma^\star $ when, at the initial state, the tape is 
+
+ %\input{notes/tape1} 
+ %whenever $\{w_1,w_2,\ldots,w_n\} \in \text{Dom}(f)$
+
+

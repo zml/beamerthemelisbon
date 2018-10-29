@@ -1,0 +1,294 @@
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{chains,fit,shapes}
+\usepackage[export]{adjustbox}
+
+\usepackage[americaninductors]{circuitikz}
+ \usetikzlibrary{arrows}
+\usepackage[T1]{fontenc}
+\usepackage[nolist,nohyperlinks]{acronym} 
+\input{acros}
+
+\usepackage{siunitx}                              
+\input{tikz/boxes.tex}
+\usepackage{color}
+\sisetup{detect-weight=true, detect-family=true}
+              
+
+
+\mode<presentation> {
+
+\usetheme{Lisbon}
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[DPInfSec - 1\textsuperscript{st} year]{Doctoral Programme in Information Security} 
+\subtitle{ 1\textsuperscript{st} year -  Coursework} 
+\institute[IST] 
+{
+%Coursework \\
+%\medskip
+Instituto Superior T\'{e}cnico, Universidade de Lisboa \\ 
+\medskip
+\textit{jose.leitao@tecnico.ulisboa.pt} 
+}
+\author{Jos\'{e} M. Leit\~{a}o }
+\date 
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+\section[Theory. of Computability \& Complexity]{Theory of Computatibility, Complexity and Information}
+\begin{frame}
+\frametitle{Mathematical Model of Computation}
+
+
+\begin{block}
+{Turing Machine (TM)}
+Abstract machine (computer) able to sequentially read/write symbols on an infinite tape by shifting its \emph{head} right or left.
+\end{block}
+\begin{figure}
+\center
+\input{tikz/tape1}
+\end{figure}
+
+\pause
+A function $\phi :\mathbb{N} \rightarrow \mathbb{N} $ is said to be a {\bf partial computable} function if there exists a Turing Machine $M$ such that
+\begin{align*}
+f_M =\phi 
+\end{align*}
+
+\pause
+A Turing Machine $M$ admits an encoding in  $\mathbb{N}$ (or in $\{0,1\}^\star$).
+
+
+\note<1>{\input{notes/TM}}
+\note<2>{\input{notes/computable1}}
+\note<3>{\input{notes/computable}}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Complexity and Information Theory}
+{\scriptsize Classifying the \emph{hardness} of a problem:}
+\begin{block}
+{Time Complexity}
+The number of elementary steps (r/w + head shifts) required to run an algorithm that solves the problem.
+\end{block}
+
+\pause
+{\scriptsize Quantifiying the \emph{randomness} of a string:}
+\begin{block}
+{Kolmogorov Complexity}
+The complexity of a string as the length of the shortest computer program that outputs the string.
+\end{block}
+\pause
+{\scriptsize Measuring the \emph{amount of information} in (knowing) a physical state:} 
+\begin{block}
+{Information Entropy}
+\begin{align*}
+-\sum_X  p(x)\log{p(x)}
+\end{align*}
+\end{block}
+
+\note{\input{notes/info}}
+\end{frame}
+
+
+\section[Physics of Information]{Physics of Classical and Quantum Information}
+
+\begin{frame}
+\frametitle{Physics of Information}
+\begin{block}{Landauer's bound [1961]}
+Any {\bf irreversible} logical operation cannot dissipate less than
+\begin{align*}
+E_{min} &=k_B T \log 2  
+\end{align*}
+\note{\input{notes/phinfo}}
+\end{block}
+
+\begin{itemize}
+\item  T= 300 K $\implies E_{min} \approx  3 \times 10^{-21} \si{\joule}$
+\end{itemize}
+
+\pause
+\underline{\href{file:../../../courses/PCQI/presentation/main.pdf}{CMOS technology is still far from this limit} }
+\pause
+
+\vspace{1em}
+\emph{Example:} 1-bit NOT gate C=\SI{1}{\femto\farad} and V=\SI{1}{\volt}
+\begin{align*}
+E_{diss} \approx CV^2 &\approx  10^{-15} \si{\joule} \approx {\color{blue} 10^6} \times E_{min}
+\end{align*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Quantum Computing}
+\begin{minipage}{0.6\columnwidth}
+Carrying information  in  quantum states $\iff$ {\bf qu}bits
+lead to a new computing paradigm, leveraging \emph{entanglement}.
+\end{minipage}
+\begin{minipage}{0.3\columnwidth}
+\hfill \includegraphics[scale=0.35]{img/Bloch_sphere.png}
+\end{minipage}
+
+\pause
+
+\begin{block}
+{Schor's Algorithm}
+Solves prime factorization in {\bf P} by 
+translating it into a phase estimation algorithm (Quantum FFT).
+\end{block}
+\pause
+Breaks most classical (public-key) cryptosystems (RSA,DH,ECC,...), hence the need for:
+\begin{itemize}
+\item Quantum Cryptography
+\item  \href{https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions}{Post-quantum Cryptography}  
+\end{itemize}
+
+\end{frame}
+
+\section[Cryptography]{Cryptography and Security Protocols}
+
+\begin{frame}
+\frametitle{Cryptographic system}
+
+A cryptosystem is a tuple $\mathcal{(X,Y,K,E,D)}$ where:
+\begin{align*}
+\mathcal{X} &\text{ is a finite set of} \textit{ plaintexts}\\
+\mathcal{Y}&\text{ is a finite set of} \textit{ ciphertexts}\\
+\mathcal{K}&\text{ is a finite set of} \textit{ keys}\\
+\mathcal{E}&=\{e_k:\mathcal{X}\to \mathcal{Y} \}_{k \in \mathcal{K} } \text{ is a family of} \textit{ encryption maps}\\
+\mathcal{D}&=\{d_k:\mathcal{Y}\to \mathcal{X} \}_{k \in \mathcal{K} } \text{ is a family of} \textit{ decryption maps}\\
+\end{align*}
+{\bf such that:}
+$ d_k(e_k(x))=x, \forall_k \in K$
+\begin{block}
+{Shannon's Theorem }
+A cryptosystem is said to be perfectly secure if
+\begin{align*}
+P(X=x|Y=y)&=P(X=x)
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cryptographic Systems - Math Background }
+\begin{itemize}
+\item Symmetric Cryptosystems - OTP, DES, AES  
+\begin{itemize}
+\item S-BOX
+\end{itemize}
+\item Asymmetric Cryptosystems - DH, RSA, ECC, ElGamal
+\begin{itemize}
+\item Signature schemes
+\end{itemize}
+\item Hash Functions
+\begin{itemize}
+\item Strong collision-free
+\item Weak collision-free
+\end{itemize}
+\item Secret-sharing
+\item Zero-knowledge
+\item Bit commitment
+\item Yao's garbled circuits
+\begin{itemize}
+\item Millionaire dilemma : $f(x_1 , x_2 ) =  \chi_{x_1 < x_2} (x_1 , x_2 )$  
+\end{itemize}
+
+\end{itemize}
+\note{\input{notes/crypto}}
+\end{frame}
+
+\section[Statistical Learning]{Statistical Learning}
+
+\begin{frame}
+\frametitle{Decision Theory}
+\begin{itemize}
+\item Bayesian Decision Theory
+\begin{align*}
+f_{S|X}(s|x)= \frac{f_{X|S}(x|s) f_S(s)}{f_X(x)} = \frac{\text{"likelihood"}\times\text{"prior"}}{\text{"evidence"}} = \text{"posterior"}
+\end{align*}
+
+\item Linear Regression
+\begin{itemize}
+\item Estimate $f_{XY}(x,y)$  - \emph{Generative Perspective}
+\item Estimate $f_{X|Y}(x|y)$  - \emph{Discriminative Perspective}
+\end{itemize}
+\item Ridge Regression (Regularization)
+\item Support Vector Machines (Classification)
+\item Probabilistic Graphical Models
+\begin{align*}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Statistical Inference in the Analog Domain}
+\begin{minipage}{0.4\columnwidth}
+\begin{itemize}
+\item Factor Graphs
+\begin{itemize}
+\item Belief Propagation
+\end{itemize}
+\vspace{1em}
+\item Analog Computing
+\begin{itemize}
+\item LDPC decoding  
+\item LFSR sync
+\item \emph{Soft-gates}
+\end{itemize}
+\end{itemize}
+\vspace{1em}
+\scalebox{1}{ \input{tikz/inv}}
+\small
+\begin{align*}
+p_{z}&=1-p_X(z)
+\end{align*}
+%\vspace{2em}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\columnwidth}
+\centering \scalebox{0.8}{ \input{tikz/factor_graph}}
+\small
+\begin{align*}
+p(x_1,x_2,x_3)=f_A(x_1,x_2,x_3) f_B(x_2)f_C(x_1,x_3)
+\end{align*}
+\scalebox{1}{ \input{tikz/inv_soft}}
+\small
+\begin{align*}
+p_{X,Y}(x,y)&=p_X(x)\underbrace{\delta(x\oplus y = 1)}_{\text{constraint}}
+\end{align*}
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}
+
+{\Huge{\centerline{Thank you}}}
+\vspace{2em}
+{\small I would also like to acknowledge the support of everyone}
+
+\end{frame}
+
+
+
