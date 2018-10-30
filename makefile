@@ -6,10 +6,10 @@
 TEX=main
 MODE=handout
 TARG=$(TEX)-$(MODE)
-OUT=$(notdir $(shell pwd))
+MAIN=$(notdir $(shell pwd))
 COMP=pdflatex
-JOBNAME=$(OUT)-$(MODE)
-OPTS=--file-line-error --jobname=$(JOBNAME)
+OUT=$(MAIN)-$(MODE)
+OPTS=--file-line-error --jobname=$(OUT)
 ERR_FILTER='info/warning/error\|file:line:error\|errorbars'
 NOW=`date +'%Y%m%d-%H%M'`
 BIB=refs.bib
@@ -24,9 +24,9 @@ all: $(TEX).tex $(TARG).tex notes/*.tex tikz/*.tex
 	@cp $(OUT).pdf $(OUT)-$(NOW).pdf
 	@cp $(OUT).pdf $(OUT)-preview.pdf
 	@echo;
-	@echo; echo 'WARNINGS:'; grep -i 'warning' $(JOBNAME).log | grep -v $(ERR_FILTER) || true
-	@echo; echo 'ERRORS:'; grep -i 'error' $(JOBNAME).log | grep -v $(ERR_FILTER) || true
-	@echo; echo 'OVER/UNDERFULL BOXES:'; grep -i 'erfull' $(JOBNAME).log || true
+	@echo; echo 'WARNINGS:'; grep -i 'warning' $(OUT).log | grep -v $(ERR_FILTER) || true
+	@echo; echo 'ERRORS:'; grep -i 'error' $(OUT).log | grep -v $(ERR_FILTER) || true
+	@echo; echo 'OVER/UNDERFULL BOXES:'; grep -i 'erfull' $(OUT).log || true
 
 
 $(TEX).bbl: $(BIB)
