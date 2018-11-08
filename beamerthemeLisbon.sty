@@ -2,7 +2,6 @@
 \ProcessOptionsBeamer
 \mode<presentation>
 
-
 \beamertemplatenavigationsymbolsempty
 
 
@@ -10,6 +9,9 @@
     {img/}
 }
 
+% remove "figure:" prefix from figure captions
+\setbeamerfont{caption}{size=\scriptsize}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
 \setbeamerfont{block title}{size={}}
